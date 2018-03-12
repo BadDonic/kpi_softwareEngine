@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<news>
+    <site name="Korrespondent" url="http://k.img.com.ua/rss/ru/ukraine.xml" />
+    <site name="Facty" url="http://fakty.ua/rss_feed/ukraina" />
+    <site name="Telegraf" url="https://telegraf.com.ua/feed/" />
+    <site name="Segodnya" url="https://www.segodnya.ua/xml/rss/rss.html" />
+    <site name="Obozrevatel" url="https://www.obozrevatel.com/rss.xml" />
+    <site name="RBC Ukraine" url="http://static.feed.rbc.ru/rbc/logical/footer/news.rss" />
+    <site name="24ua" url="https://24tv.ua/rss/tag/1792.xml?lang=ru" />
+</news>
