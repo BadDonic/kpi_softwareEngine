@@ -1,2 +1,2 @@
-coverage
-pep8
+coverage==4.5.1
+pep8==1.7.1
