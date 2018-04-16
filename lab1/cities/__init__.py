@@ -31,3 +31,4 @@ def count(cities_filename, sites_filename, out_file):
             cities[index]['count'] += response.count(cities[index]['name'])
     new_list = sorted(cities, key=itemgetter('count'), reverse=True)
     write_cities_xml(out_file, new_list)
+    print("SUCCESS!!!")
