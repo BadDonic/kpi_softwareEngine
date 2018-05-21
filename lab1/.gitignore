@@ -1,0 +1,7 @@
+venv/
+.idea/
+data/out.xml
+cities/__pycache__/
+test/__pycache__/
+.coverage
+htmlcov/
