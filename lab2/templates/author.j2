@@ -10,7 +10,7 @@
 </head>
 <body>
 <div>
-    <canvas id="pieDiagram"></canvas>
+    <canvas id="pieDiagram" style="width: 30%"></canvas>
     <table style="width:100%" class="table table-striped">
         <tr>
             <th>Topic</th>
@@ -30,24 +30,24 @@
 </div>
 </body>
 <script>
-    var authorMessagesCount = {{  author_messages_count  }}
-    var topicMessagesCount = {{  topic_messages_count  }}
-    var data = {
+    let authorMessagesCount = {{  author_messages_count  }}
+    let topicMessagesCount = {{  topic_messages_count  }}
+    let data = {
         datasets: [{
             label: 'Кількість повідомлень',
-            data: [authorMessagesCount, topicMessagesCount - authorMessagesCount],
+            data: [authorMessagesCount, topicMessagesCount],
             backgroundColor: [
-                '#ff6384',
-                '#36a2eb'
+                '#ffde59',
+                '#6eebe3'
             ]
         }],
         labels: [
-            'Автора у темі',
-            'Усього у темі'
+            'Author\'s posts',
+            'All posts'
         ]
-    }
-    var ctx = document.getElementById('pieDiagram').getContext('2d')
-    var chart = new Chart(ctx, {
+    };
+    let ctx = document.getElementById('pieDiagram').getContext('2d')
+    let chart = new Chart(ctx, {
         type: 'pie',
         data: data,
         options: {}

@@ -18,10 +18,6 @@ class PetsSpider(scrapy.Spider):
             request.meta['topic'] = topic.xpath('./text()').extract_first()
             yield request
 
-        # next_page = response.css('span.prev_next a[rel="next"]::attr("href")').extract_first()
-        # if next_page is not None:
-        #     yield response.follow(next_page, self.parse)
-
     def parse_thread_pages(self, response):
         for post in response.xpath("//li[contains(@id, 'post_')]"):
             topic = response.meta['topic']
@@ -29,12 +25,11 @@ class PetsSpider(scrapy.Spider):
             author = post.css("a strong::text").extract_first()
             date = post.css('span.date::text').extract_first() + post.css('span.time::text').extract_first()
             yield {
-                    'topic': topic,
-                    'author': author,
-                    'message': "".join(message),
-                    'date': date
+                'topic': topic,
+                'author': author,
+                'message': "".join(message),
+                'date': date
             }
-
         next_page = response.css('span.prev_next a[rel="next"]::attr("href")').extract_first()
         if next_page is not None:
             yield response.follow(next_page, self.parse_thread_pages)

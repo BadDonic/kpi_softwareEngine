@@ -1,0 +1,45 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+    <title>Lab2</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<table style="width:100%; border: 3px solid black" class="table table-striped">
+    <tr style="border: 3px solid black">
+        <th style="width:15%;  opacity: 4%; background-color: aqua">Topic</th>
+        <th style="width:15%; opacity: 6%; background-color: beige">Date</th>
+        <th style="width:10%; opacity: inherit; background-color: aqua">Author</th>
+        <th style="width:50%; opacity: initial; background-color: beige">Message</th>
+    </tr>
+    {% for d in data %}
+    <tr style="border: 3px solid black">
+        <td style="background-color: lavender; height: 50px; vertical-align: bottom">{{ d['topic'] }}
+        </td>
+        <td style="background-color: cornsilk; height: 50px; vertical-align: bottom">{{ d['date'] }}</td>
+        <td style="background-color: lavender; height: 50px; vertical-align: bottom"><a href="/{{ d['topic'] }}/{{ d['author'] }}">{{ d['author'] }}</a></td>
+        <td style="background-color: cornsilk; height: 50px; vertical-align: bottom">{{ d['message'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="container">
+    <ul class="pagination">
+        {% if page > 0 %}
+        <li><a href='/?page=0'>Перша</a>
+        <li><a href='/?page={{ page-1 }}'>Попередня сторінка</a>
+            {% endif %}
+        <li class="active"><a>{{ page + 1 }}</a></li>
+        {% if page < pages %}
+        {% if page + 1 != pages %}
+        <li><a href='/?page={{ page + 1 }}'>Наступна сторінка</a></li>
+        <li><a href='/?page={{ pages }}'>Остання</a></li>
+        {% endif %}
+        {% endif %}
+    </ul>
+</div>
+</body>

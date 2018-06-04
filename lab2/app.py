@@ -13,7 +13,7 @@ def index():
         page = 0
     data = client.pets.posts.find().skip(int(page) * perPage).limit(perPage)
     pages = client.pets.posts.count() // perPage
-    return render_template('index.html', data=[d for d in data], page=1, pages=1)
+    return render_template('index.j2', data=data, page=int(page), pages=pages)
 
 
 @app.route('/<topic>/<author>')
@@ -22,25 +22,9 @@ def topic_author(topic, author):
     records = data.find({'topic': topic, 'author': author})
     topic_messages_count = data.count({'topic': topic})
     author_messages_count = data.count({'topic': topic, 'author': author})
-    print(topic_messages_count)
-    print(author_messages_count)
-    return render_template('author.html', data=[d for d in records], author_messages_count=author_messages_count, topic_messages_count=topic_messages_count)
-
-
-# @app.route('/add')
-# def hello_world():
-
-# spider_name = "forum_spider.py"
-# subprocess.check_output(['scrapy', 'runspider', spider_name, "-o", "output.json"])
-# with open("output.json") as items_file:
-#     result = json.loads(items_file.read())
-#     print(result)
-#     for r in result:
-#         client.cselab.data.insert(r)
-# client.close()
-# return "helloworld"
+    return render_template('author.j2', data=records, author_messages_count=author_messages_count,
+                           topic_messages_count=topic_messages_count)
 
 
 if __name__ == '__main__':
     app.run()
-
